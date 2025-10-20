@@ -66,6 +66,17 @@
       line-height: 1.8;
     }
 
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px;
+      border-radius: 8px;
+      border: none;
+      background-color: #111;
+      color: #fff;
+      border: 1px solid #00ffff55;
+    }
+
     .social-links {
       margin-top: 20px;
       text-align: center;
@@ -163,51 +174,29 @@
       <p>خدمة تلخيص الدروس وإنشاء أسئلة الفهم لطلبة الجزائر</p>
     </div>
 
-    <!-- ✅ قسم الخدمات -->
     <section class="cv-section">
       <h2>خدماتنا</h2>
       <p>📘 أرسل لنا درسك وسنقوم بتلخيصه بدقة عالية، مع إعداد أسئلة نظرية وQCM تساعدك على الفهم الجيد والمراجعة السريعة.</p>
-      <p>🎯 يمكنك طلب الخدمة حسب حاجتك — فقط تلخيص، أو تلخيص + أسئلة تدريبية.</p>
       <ul>
         <li>✏️ تلخيص احترافي مبني على الفهم لا النسخ.</li>
-        <li>📄 أسئلة نظرية واختيار من متعدد (QCM) لتثبيت المعلومات.</li>
-        <li>🖨️ إمكانية طباعة الدرس وتحميله بصيغة PDF.</li>
+        <li>📄 أسئلة نظرية واختيار من متعدد (QCM).</li>
+        <li>🖨️ إمكانية طباعة وتحميل بصيغة PDF.</li>
         <li>💬 دعم عبر واتساب وسرعة في التسليم.</li>
       </ul>
     </section>
 
-    <!-- ✅ جدول الأسعار -->
     <section>
       <h2>💰 جدول الأسعار</h2>
       <table>
-        <tr>
-          <th>عدد الصفحات</th>
-          <th>بدون أسئلة</th>
-          <th>مع أسئلة نظرية + QCM</th>
-        </tr>
-        <tr>
-          <td>1 - 3 صفحات</td>
-          <td>400 دج</td>
-          <td>700 دج</td>
-        </tr>
-        <tr>
-          <td>4 - 6 صفحات</td>
-          <td>600 دج</td>
-          <td>1000 دج</td>
-        </tr>
-        <tr>
-          <td>7 - 10 صفحات</td>
-          <td>900 دج</td>
-          <td>1500 دج</td>
-        </tr>
-        <tr>
-          <td>أكثر من 10 صفحات</td>
-          <td colspan="2">📩 السعر يُحدد بعد الإطلاع على الدرس</td>
-        </tr>
+        <tr><th>عدد الصفحات</th><th>بدون أسئلة</th><th>مع أسئلة نظرية + QCM</th></tr>
+        <tr><td>1 - 3 صفحات</td><td>400 دج</td><td>700 دج</td></tr>
+        <tr><td>4 - 6 صفحات</td><td>600 دج</td><td>1000 دج</td></tr>
+        <tr><td>7 - 10 صفحات</td><td>900 دج</td><td>1500 دج</td></tr>
+        <tr><td>أكثر من 10 صفحات</td><td colspan="2">📩 السعر يُحدد بعد الإطلاع على الدرس</td></tr>
       </table>
     </section>
 
-    <!-- ✅ نموذج التواصل كما هو -->
+    <!-- ✅ نموذج التواصل -->
     <section>
       <h2>📬 أرسل درسك الآن</h2>
       <form id="contactForm">
@@ -217,17 +206,16 @@
         <label>رقم الهاتف:</label>
         <input type="text" name="phone" required>
 
-         <label> اضف ايمايلك للتواصل معك :</label>
-        <input type="text" name="phone" required>
+        <label>أدخل بريدك الإلكتروني للتواصل:</label>
+        <input type="email" name="email" required>
 
+        <label>وصف مختصر للدرس:</label>
+        <textarea name="message" required></textarea>
 
-        <label>وصف مختصر للدرس :</label>
-        <textarea name="message" required> </textarea>
         <button type="submit">📨 إرسال الطلب</button>
       </form>
     </section>
 
-    <!-- ✅ روابط التواصل نفسها -->
     <div class="social-links">
       <a href="mailto:akalabdelhakamine38@gmail.com">📧 البريد الإلكتروني</a>
       <a href="https://www.facebook.com/profile.php?id=61577163575345" target="_blank">📘 فيسبوك</a>
@@ -249,10 +237,10 @@
 
       const name = document.querySelector('input[name="name"]').value;
       const phone = document.querySelector('input[name="phone"]').value;
+      const email = document.querySelector('input[name="email"]').value;
       const message = document.querySelector('textarea[name="message"]').value;
-     const email = document.querySelector('textarea[name="email"]').value;
 
-      const text = `📩 طلب جديد من LessonDZ:\n\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📘 تفاصيل الطلب:\n${message}`;
+      const text = `📩 طلب جديد من LessonDZ:\n\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📧 الإيميل: ${email}\n📘 تفاصيل الدرس:\n${message}`;
 
       const proxyUrl = "https://api.allorigins.win/get?url=";
       fetch(proxyUrl + encodeURIComponent(`${TELEGRAM_API}?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`))
